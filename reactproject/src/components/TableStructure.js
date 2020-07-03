@@ -39,14 +39,11 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-function createData(id, date, name, options, status) {
-    return { id, date, name, options, status };
-}
-
-const rows = [
-    createData(1, '2000-08-21', 'Priya', 'yes', '2'),
-    createData(2, '1998-11-15', 'Kushagra', 'yes', '1')
-];
+var rows =
+    [
+        { "id": 1, "date": "2000-08-21", "name": "Priya", "options": "yes", "status": 2 },
+        { "id": 2, "date": "1998-11-15", "name": "Kushagra", "options": "yes", "status": 1 },
+    ]
 
 const useStyles = makeStyles({
     table: {
@@ -67,11 +64,11 @@ function TableStructure() {
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>Actions</StyledTableCell>
-                            <StyledTableCell align="justified">ID</StyledTableCell>
-                            <StyledTableCell align="justified">Date</StyledTableCell>
-                            <StyledTableCell align="justified">Name</StyledTableCell>
-                            <StyledTableCell align="justified">Options</StyledTableCell>
-                            <StyledTableCell align="justified">Status</StyledTableCell>
+                            <StyledTableCell align="justify">ID</StyledTableCell>
+                            <StyledTableCell align="justify">Date</StyledTableCell>
+                            <StyledTableCell align="justify">Name</StyledTableCell>
+                            <StyledTableCell align="justify">Options</StyledTableCell>
+                            <StyledTableCell align="justify">Status</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -89,13 +86,12 @@ function TableStructure() {
                                         startIcon={<Create />}>
                                         Edit</Button>
                                 </StyledTableCell>
-                                <StyledTableCell align="justified">{row.id}</StyledTableCell>
-                                <StyledTableCell align="justified">
+                                <StyledTableCell align="justify">{row.id}</StyledTableCell>
+                                <StyledTableCell align="justify">
                                     <form className={classes.container} noValidate>
                                         <TextField
                                             id="date"
                                             type="date"
-                                            defaultValue="2017-05-24"
                                             value={row.date}
                                             className={classes.textField}
                                             InputLabelProps={{
@@ -104,8 +100,8 @@ function TableStructure() {
                                         />
                                     </form>
                                 </StyledTableCell>
-                                <StyledTableCell align="justified">{row.name}</StyledTableCell>
-                                <StyledTableCell align="justified">{row.options}</StyledTableCell>
+                                <StyledTableCell align="justify">{row.name}</StyledTableCell>
+                                <StyledTableCell align="justify">{row.options}</StyledTableCell>
                                 <StyledTableCell align="justify">{row.status}</StyledTableCell>
                             </StyledTableRow>
                         ))}
