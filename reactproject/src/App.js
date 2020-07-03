@@ -1,15 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
+import TableStructure from './components/TableStructure'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hello
-        </p>
-      </header>
+    <div>
+      <TableStructure />
     </div>
   );
 }
