@@ -9,6 +9,7 @@ import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import TablePagination from '@material-ui/core/TablePagination';
 
+
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -30,8 +31,6 @@ const StyledTableCell = withStyles((theme) => ({
     },
     body: {
         fontSize: 15,
-        padding: '10px',
-        alignContent: 'right',
     },
 }))(TableCell);
 
@@ -77,11 +76,9 @@ var rows =
         { "id": 2, "date": "1998-11-15", "name": "Kushagra", "options": "no", "status": 1 },
         { "id": 3, "date": "1970-10-28", "name": "Srikanth", "options": "yes", "status": 3 },
         { "id": 1, "date": "2000-08-21", "name": "Priya", "options": "yes", "status": 2 },
-        { "id": 4, "date": "2000-09-12", "name": "Sanjana", "options": "no", "status": 5 },
     ]
 
 const headCells = [
-    { id: 'actions', numeric: false, label: 'Actions' },
     { id: 'id', numeric: true, label: 'ID' },
     { id: 'date', numeric: true, label: 'Date' },
     { id: 'Name', numeric: false, label: 'Name' },
@@ -97,6 +94,12 @@ function EnhancedTableHead(props) {
     return (
         <TableHead>
             <StyledTableRow align="right">
+                <StyledTableCell>
+                    <Button variant="contained"
+                        color="primary"
+                        startIcon={<Add />}>
+                        New Row</Button>
+                </StyledTableCell>
                 {headCells.map((headCell) => (
                     <StyledTableCell
                         key={headCell.id}
@@ -199,11 +202,6 @@ function TableStructure() {
                                 return (
                                     <StyledTableRow key={row.name} tabIndex={-1}>
                                         <StyledTableCell align='center'>
-                                            <Button variant="contained"
-                                                color="default"
-                                                className={classes.button}
-                                                startIcon={<Add />}>
-                                                New</Button>
                                             <Button variant="contained"
                                                 color="default"
                                                 className={classes.button}
