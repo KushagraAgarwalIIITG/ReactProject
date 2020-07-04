@@ -1,13 +1,14 @@
 import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Button, Paper, TextField, TableRow, TableHead, TableContainer, TableCell, TableBody, Table } from '@material-ui/core';
+import { Paper, TextField, TableRow, TableHead, TableContainer, TableCell, TableBody, Table } from '@material-ui/core';
 import { MenuItem, FormControl, Select, TableSortLabel } from '@material-ui/core'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { Add, Create } from '@material-ui/icons';
+//import { Add } from '@material-ui/icons';
 import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import TablePagination from '@material-ui/core/TablePagination';
+import Addentry from './Addentry';
 
 
 const theme = createMuiTheme({
@@ -95,10 +96,7 @@ function EnhancedTableHead(props) {
         <TableHead>
             <StyledTableRow align="right">
                 <StyledTableCell>
-                    <Button variant="contained"
-                        color="primary"
-                        startIcon={<Add />}>
-                        New Row</Button>
+                    <Addentry />
                 </StyledTableCell>
                 {headCells.map((headCell) => (
                     <StyledTableCell
@@ -202,11 +200,7 @@ function TableStructure() {
                                 return (
                                     <StyledTableRow key={row.name} tabIndex={-1}>
                                         <StyledTableCell align='center'>
-                                            <Button variant="contained"
-                                                color="default"
-                                                className={classes.button}
-                                                startIcon={<Create />}>
-                                                Edit</Button>
+                                            {/* <Addentry /> */}
                                         </StyledTableCell>
                                         <StyledTableCell align="center">{row.id}</StyledTableCell>
                                         <StyledTableCell align="center">
