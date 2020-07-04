@@ -154,8 +154,8 @@ const useStyles = makeStyles({
         overflow: 'hidden',
         padding: 0,
         position: 'absolute',
-        top: 20,
         width: 1,
+        top: 20,
     },
 });
 
