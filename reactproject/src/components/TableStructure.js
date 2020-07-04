@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,ReactDOM}from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Button, Paper, TextField, TableRow, TableHead, TableContainer, TableCell, TableBody, Table } from '@material-ui/core';
 import { MenuItem, FormControl, Select, TableSortLabel } from '@material-ui/core'
@@ -8,8 +8,8 @@ import { Add, Create } from '@material-ui/icons';
 import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import TablePagination from '@material-ui/core/TablePagination';
-
-
+import NewRowForm from './NewRowForm'
+import { render } from '@testing-library/react';
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -70,13 +70,7 @@ function stableSort(array, comparator) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-var rows =
-    [
 
-        { "id": 2, "date": "1998-11-15", "name": "Kushagra", "options": "no", "status": 1 },
-        { "id": 3, "date": "1970-10-28", "name": "Srikanth", "options": "yes", "status": 3 },
-        { "id": 1, "date": "2000-08-21", "name": "Priya", "options": "yes", "status": 2 },
-    ]
 
 const headCells = [
     { id: 'id', numeric: true, label: 'ID' },
@@ -85,8 +79,12 @@ const headCells = [
     { id: 'options', numeric: false, label: 'Options' },
     { id: 'status', numeric: true, label: 'Status' },
 ];
+
+function testing (){
+  ReactDOM.render(<h1>testing</h1>)
+}
 function EnhancedTableHead(props) {
-    const { classes, order, orderBy, onRequestSort } = props;
+    const { classes, order, orderBy, onRequestSort ,addRow} = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
@@ -95,7 +93,7 @@ function EnhancedTableHead(props) {
         <TableHead>
             <StyledTableRow align="right">
                 <StyledTableCell>
-                    <Button variant="contained"
+                    <Button onClick={ testing } variant="contained"
                         color="primary"
                         startIcon={<Add />}>
                         New Row</Button>
@@ -166,6 +164,30 @@ function TableStructure() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+
+
+    const [rows, setRows] =useState(
+        [
+    
+            { "id": 2, "date": "1998-11-15", "name": "Kushagra", "options": "no", "status": 1 },
+            { "id": 3, "date": "1970-10-28", "name": "Srikanth", "options": "yes", "status": 3 },
+            { "id": 1, "date": "2000-08-21", "name": "Priya", "options": "yes", "status": 2 },
+        ])
+    const addRow=(id, date, name,options,status)=>{
+        setRows([...rows,{id, date, name,options,status}])
+    }
+    const editRow=(id)=>{
+
+    }
+
+
+
+
+
+
+
+
+
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
@@ -194,6 +216,7 @@ function TableStructure() {
                         order={order}
                         orderBy={orderBy}
                         onRequestSort={handleRequestSort}
+                        addRow={addRow}
                     />
                     <TableBody>
                         {stableSort(rows, getComparator(order, orderBy))
@@ -266,7 +289,9 @@ function TableStructure() {
                 onChangePage={handleChangePage}
                 onChangeRowsPerPage={handleChangeRowsPerPage}
             />
+            
         </ThemeProvider>
+        
     );
 }
 
